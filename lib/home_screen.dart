@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
    backgroundColor: const Color.fromARGB(255, 218, 165, 228),
-        title: Center(child: Text("GetX Tutorial")),
+        title: Center(child: Text("Bottom Sheet and Change theme")),
 
       ),
       body: Column(
@@ -22,18 +22,34 @@ class _HomeScreenState extends State<HomeScreen> {
          Card(
            child: ListTile(
                 
-                 title: Text("Get x",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                 title: Text("Bottom Sheet",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
                  subtitle: Text("press it"),
                  onTap: () {
-                   Get.defaultDialog(
-                    titlePadding: EdgeInsets.only(top: 20),
-                    title: "Welcome ",middleText: "Are you new to flutter ?",
-                    confirm: TextButton(onPressed:() {
-                      Navigator.pop(context);
-                    }, child: Text("ok")),
-                    cancel: TextButton(onPressed:() {
-                      Get.back();  // same as Navigator.pop()
-                    }, child:Text("cancel")));
+                 Get.bottomSheet(
+                 
+                  Container(
+                    color: Colors.blueGrey,
+                    child: Column(
+                        
+                     children: [
+                       ListTile(
+                         leading: Icon(Icons.light_mode),
+                         title: Text("Light Theme"), 
+                         onTap: () {
+                           Get.changeTheme(ThemeData.light());
+                         },
+                       ),
+                        ListTile(
+                         leading: Icon(Icons.dark_mode),
+                         title: Text("Dark Theme"), 
+                           onTap: () {
+                               Get.changeTheme(ThemeData.dark());
+                           },
+                       )
+                     ],
+                    ),
+                  )
+                 );
                     
                  },
 
