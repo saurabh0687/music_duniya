@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:music_duniya/screenOne.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,56 +15,19 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
    backgroundColor: const Color.fromARGB(255, 218, 165, 228),
-        title: Center(child: Text("Bottom Sheet and Change theme")),
+        title: Center(child: Text("Welcome")),
 
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-         Card(
-           child: ListTile(
-                
-                 title: Text("Bottom Sheet",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
-                 subtitle: Text("press it"),
-                 onTap: () {
-                 Get.bottomSheet(
-                 
-                  Container(
-                    color: Colors.blueGrey,
-                    child: Column(
-                        
-                     children: [
-                       ListTile(
-                         leading: Icon(Icons.light_mode),
-                         title: Text("Light Theme"), 
-                         onTap: () {
-                           Get.changeTheme(ThemeData.light());
-                         },
-                       ),
-                        ListTile(
-                         leading: Icon(Icons.dark_mode),
-                         title: Text("Dark Theme"), 
-                           onTap: () {
-                               Get.changeTheme(ThemeData.dark());
-                           },
-                       )
-                     ],
-                    ),
-                  )
-                 );
-                    
-                 },
-
-           ),
-         )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(onPressed:() {
-        Get.snackbar("Saurabh Baghel","Hey don't pressed it",
-      //  snackPosition: SnackPosition.BOTTOM
-      icon: Icon(Icons.add)
-        );
-
-      },),
+          Center(child: TextButton(child: Text("Go to Screen One"),onPressed: () {
+           // Navigator.push(context, MaterialPageRoute(builder: ((context) => ScreenOne())));//Flutter navigation
+           Get.to(ScreenOne(name: "Saurabh",));
+          },),)
+        ]
+      )
     );
   }
 }
