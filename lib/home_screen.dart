@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
    backgroundColor: const Color.fromARGB(255, 218, 165, 228),
-        title: Center(child: Text("Welcome")),
+        title: Center(child: Text("Home")),
 
       ),
       body: Column(
@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Center(child: TextButton(child: Text("Go to Screen One"),onPressed: () {
            // Navigator.push(context, MaterialPageRoute(builder: ((context) => ScreenOne())));//Flutter navigation
-           Get.to(ScreenOne(name: "Saurabh",));
+           Get.toNamed('/ScreenOne',arguments: ['Saurabh','Baghel']);
           },),)
         ]
       )
