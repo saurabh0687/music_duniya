@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
         Text("Notifications"),
        Obx(() => Switch(value: _exampleController.notifications.value, onChanged:(value) {
-           _exampleController.notifications.value=!_exampleController.notifications.value;
+           _exampleController.SetNotifications(value);
            
           },),
         )
