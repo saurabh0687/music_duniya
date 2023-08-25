@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:music_duniya/controller/Controller.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -10,30 +11,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  ExampleController _exampleController= Get.put(ExampleController());
 
-double Opacity=.4;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-   backgroundColor: const Color.fromARGB(255, 218, 165, 228),
+   backgroundColor: Color.fromARGB(255, 50, 43, 51),
         title: Center(child: Text("Home")),
 
       ),
       body:Column(
         children: [
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.purpleAccent.withOpacity(Opacity),
+         Obx(() =>Container(
+              height: 100,
+              width: 100,
+              color: Colors.purpleAccent.withOpacity(_exampleController.Opacity.value),
+            ),
           ),
-          Slider(value: Opacity, onChanged: (value) {
-              Opacity=value;
-           setState(() {
-             
-           });
-          },)
+        Obx(() =>
+            Slider(value: _exampleController.Opacity.value, onChanged: (value) {
+               _exampleController.SetOpacity(value);
+            
+            },),
+          )
         ],
       )
     );
