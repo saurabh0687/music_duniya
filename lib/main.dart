@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_duniya/home_screen.dart';
-import 'package:music_duniya/screenOne.dart';
-import 'package:music_duniya/screen_two.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -35,14 +34,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      //home: HomeScreen(),
-      getPages: [
-             GetPage(name:'/',page: ()=>HomeScreen()),
-             GetPage(name: '/ScreenOne', page:()=> ScreenOne()),
-             GetPage(name: '/ScreenTwo', page:()=>ScreenTwo())
-
-
-      ],
+      home: HomeScreen(),
+      
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:music_duniya/screenOne.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +10,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+double Opacity=.4;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,15 +21,20 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Center(child: Text("Home")),
 
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+      body:Column(
         children: [
-          Center(child: TextButton(child: Text("Go to Screen One"),onPressed: () {
-           // Navigator.push(context, MaterialPageRoute(builder: ((context) => ScreenOne())));//Flutter navigation
-           Get.toNamed('/ScreenOne',arguments: ['Saurabh','Baghel']);
-          },),)
-        ]
+          Container(
+            height: 100,
+            width: 100,
+            color: Colors.purpleAccent.withOpacity(Opacity),
+          ),
+          Slider(value: Opacity, onChanged: (value) {
+              Opacity=value;
+           setState(() {
+             
+           });
+          },)
+        ],
       )
     );
   }
