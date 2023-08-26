@@ -20,26 +20,40 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
     
      
-      body:ListView.builder(
-        itemCount: _exampleController.fruitsList.length,
-        itemBuilder: (context, index) {
-        return Card(
-          child: ListTile(
-            onTap: () {
-              if(_exampleController.fav.contains(_exampleController.fruitsList[index].toString())){
-                 _exampleController.removeFav(_exampleController.fruitsList[index].toString());
-              }
-              else{
-                 _exampleController.addFav(_exampleController.fruitsList[index].toString());
-              }
-              },
-            
-            
-            title: Text(_exampleController.fruitsList[index].toString()),
-            trailing: Obx(() =>  Icon(Icons.favorite ,color: _exampleController.fav.contains(_exampleController.fruitsList[index].toString())?Colors.red:Colors.white,)),
-          ),
-        );
-      })
+      body:Column(
+mainAxisAlignment: MainAxisAlignment.center,
+crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    TextFormField(
+    controller:_exampleController.emailController.value,
+    decoration: InputDecoration(
+      hintText: "Email"
+    ),
+    ),
+    SizedBox(height: 50,),
+    TextFormField(
+      controller:_exampleController.passwordController.value,
+      decoration: InputDecoration(
+        hintText: "Password"
+      ),
+    ),
+        SizedBox(height: 50,),
+    InkWell(
+      onTap: () {
+        _exampleController.loginApi();
+        
+      },
+      child: Obx(() => _exampleController.check.value? CircularProgressIndicator(): Container(
+        height: 50,
+        width: 300,
+        color: Colors.grey,
+      child: Center(child: Text("Login")),
+      ),
+    )
+    )
+  ],
+
+      )
     );
   }
 }
